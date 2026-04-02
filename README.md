@@ -14,7 +14,9 @@ class HasMenu{
 class SQLiteDB{
     +addPlayer(name) void
     +deletePlayer(name) void
+    +updatePlayer(name) void
     +addGame(entry) void
+    +deleteGame(entry) void
     +updateGame(entry) void
     +getPlayer(name) Player
     +getAllPlayers() ArrayList~Player~ 

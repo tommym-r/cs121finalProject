@@ -15,7 +15,7 @@ class Database{
     - gameLogs ArrayList~GameLog~
     +addPlayer(name) void
     +deletePlayer(name) void
-    +updatePlayer(name) void
+    +updatePlayer(oldName, newName) void
     +addGame(gameLog) void
     +deleteGame(playerId, date) void
     +updateGame(gameLog) void
@@ -57,24 +57,10 @@ class Player{
 
 class StatCalc {
     -StatCalc()
-    +getPointsPerGame(gameLogs) double$
-    +getReboundsPerGame(gameLogs) double$
-    +getAssistsPerGame(gameLogs) double$
-    +getMinutesPerGame(gameLogs) double$
-    +getBlocksPerGame(gameLogs) double$
-    +getStealsPerGame(gameLogs) double$
-    +getHighPoints(gameLogs) int$
-    +getHighRebounds(gameLogs) int$
-    +getHighAssists(gameLogs) int$
-    +getHighBlocks(gameLogs) int$
-    +getHighSteals(gameLogs) int$
-    +getHighMinutes(gameLogs) int$
-    +sortByPoints(gameLogs) ArrayList~GameLog~$
-    +sortByRebounds(gameLogs) ArrayList~GameLog~$
-    +sortByAssists(gameLogs) ArrayList~GameLog~$
-    +sortByMinutes(gameLogs) ArrayList~GameLog~$
-    +sortBySteals(gameLogs) ArrayList~GameLog~$
-    +sortByBlocks(gameLogs) ArrayList~GameLog~$
+    +getPerGame(gameLogs, stat) double$
+    +getHigh(gameLogs, stat) int$
+    +sortBy(gameLogs, stat) ArrayList~GameLog~$
+    +sortPlayersByAvg(players, db, stat) ArrayList~Player~$
 }
 
 class User{
@@ -113,4 +99,5 @@ Session --> StatCalc : uses
 Database --* Player : owns
 Database --* GameLog : owns
 StatCalc --> GameLog : uses
+StatCalc --> Database : uses
 ```

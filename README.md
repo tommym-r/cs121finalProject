@@ -51,6 +51,7 @@ class Player{
     +Player(id, name)
     +getId() int
     +getName() String
+    +setName(name) void
     +toString() String
 }
 

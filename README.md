@@ -16,9 +16,9 @@ class Database{
     +addPlayer(name) void
     +deletePlayer(name) void
     +updatePlayer(name) void
-    +addGame(gameLogEntry) void
-    +deleteGame(gameLogEntry) void
-    +updateGame(gameLogEntry) void
+    +addGame(gameLog) void
+    +deleteGame(playerId, date) void
+    +updateGame(gameLog) void
     +getPlayer(name) Player
     +getAllPlayers() ArrayList~Player~
     +getGameLogs(playerId) ArrayList~GameLog~
@@ -26,14 +26,16 @@ class Database{
 
 class GameLog{
     - playerId int
+    - date String
     - points int
     - rebounds int
     - assists int
     - blocks int
     - steals int
     - minutes int
-    +GameLog(playerId, points, rebounds, assists, blocks, steals, minutes)
+    +GameLog(playerId, date, points, rebounds, assists, blocks, steals, minutes)
     +getPlayerId() int
+    +getDate() String
     +getPoints() int
     +getRebounds() int
     +getAssists() int
@@ -94,7 +96,6 @@ class Guest{
 
 class Session{
     - user User
-    - gameLogEntry String array
     - playerList ArrayList~Player~
     - gameLogList ArrayList~GameLog~
     +menu() String

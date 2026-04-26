@@ -10,62 +10,68 @@ class HasMenu{
     +start() void
 }
 
-
-class SQLiteDB{
+class Database{
+    - players ArrayList~Player~
+    - gameLogs ArrayList~GameLog~
     +addPlayer(name) void
     +deletePlayer(name) void
     +updatePlayer(name) void
-    +addGame(entry) void
-    +deleteGame(entry) void
-    +updateGame(entry) void
+    +addGame(gameLogEntry) void
+    +deleteGame(gameLogEntry) void
+    +updateGame(gameLogEntry) void
     +getPlayer(name) Player
-    +getAllPlayers() ArrayList~Player~ 
-
+    +getAllPlayers() ArrayList~Player~
+    +getGameLogs(playerId) ArrayList~GameLog~
 }
 
-class Player{
-    -id int
-    -name String
-    -points int
-    -rebounds int
-    -assists int
-    -games int
-    -minutes int
-    -blocks int
-    -steals int
-    +Player(id, name, points, rebounds, assists, blocks, steals, games, minutes)
-    +getName() String
+class GameLog{
+    - playerId int
+    - points int
+    - rebounds int
+    - assists int
+    - blocks int
+    - steals int
+    - minutes int
+    +GameLog(playerId, points, rebounds, assists, blocks, steals, minutes)
+    +getPlayerId() int
     +getPoints() int
     +getRebounds() int
     +getAssists() int
-    +getGames() int
-    +getMinutes() int
     +getBlocks() int
     +getSteals() int
+    +getMinutes() int
+    +toString() String
+}
+
+class Player{
+    - id int
+    - name String
+    +Player(id, name)
+    +getId() int
+    +getName() String
     +toString() String
 }
 
 class StatCalc {
-    +StatCalc()
-    +getPointsPerGame(player) double
-    +getReboundsPerGame(player) double
-    +getAssistsPerGame(player) double
-    +getMinutesPerGame(player) double
-    +getBlocksPerGame(player) double
-    +getStealsPerGame(player) double
-    +getHighPoints(playerList) int
-    +getHighRebounds(playerList) int
-    +getHighAssists(playerList) int
-    +getHighBlocks(playerList) int
-    +getHighSteals(playerList) int
-    +getHighMinutes(playerList) int
-    +sortPlayersPoints(playerList) ArrayList~Player~
-    +sortPlayersRebounds(playerList) ArrayList~Player~
-    +sortPlayersAssists(playerList) ArrayList~Player~
-    +sortPlayersGames(playerList) ArrayList~Player~
-    +sortPlayersMinutes(playerList) ArrayList~Player~
-    +sortPlayersSteals(playerList) ArrayList~Player~
-    +sortPlayersBlocks(playerList) ArrayList~Player~
+    -StatCalc()
+    +getPointsPerGame(gameLogs) double$
+    +getReboundsPerGame(gameLogs) double$
+    +getAssistsPerGame(gameLogs) double$
+    +getMinutesPerGame(gameLogs) double$
+    +getBlocksPerGame(gameLogs) double$
+    +getStealsPerGame(gameLogs) double$
+    +getHighPoints(gameLogs) int$
+    +getHighRebounds(gameLogs) int$
+    +getHighAssists(gameLogs) int$
+    +getHighBlocks(gameLogs) int$
+    +getHighSteals(gameLogs) int$
+    +getHighMinutes(gameLogs) int$
+    +sortByPoints(gameLogs) ArrayList~GameLog~$
+    +sortByRebounds(gameLogs) ArrayList~GameLog~$
+    +sortByAssists(gameLogs) ArrayList~GameLog~$
+    +sortByMinutes(gameLogs) ArrayList~GameLog~$
+    +sortBySteals(gameLogs) ArrayList~GameLog~$
+    +sortByBlocks(gameLogs) ArrayList~GameLog~$
 }
 
 class User{
@@ -88,8 +94,9 @@ class Guest{
 
 class Session{
     - user User
-    - entry String array
+    - gameLogEntry String array
     - playerList ArrayList~Player~
+    - gameLogList ArrayList~GameLog~
     +menu() String
     +start() void
     +main() void
@@ -99,8 +106,9 @@ Admin --|> User : extends
 Guest --|> User : extends
 User --|> HasMenu : implements
 Session --|> HasMenu : implements
-Session --> SQLiteDB : uses
+Session --> Database : uses
 Session --> StatCalc : uses
-SQLiteDB --> Player : creates
-StatCalc --> Player : uses
+Database --* Player : owns
+Database --* GameLog : owns
+StatCalc --> GameLog : uses
 ```

@@ -61,6 +61,7 @@ class StatCalc {
     +getHigh(gameLogs, stat) int$
     +sortBy(gameLogs, stat) ArrayList~GameLog~$
     +sortPlayersByAvg(players, db, stat) ArrayList~Player~$
+    -getStat(g, stat) int$
 }
 
 class User{
@@ -83,11 +84,29 @@ class Guest{
 
 class Session{
     - user User
-    - playerList ArrayList~Player~
-    - gameLogList ArrayList~GameLog~
+    - database Database
+    - admin Admin
+    - input Scanner
     +menu() String
     +start() void
     +main() void
+    -adminLogin() void
+    -adminMenu() void
+    -guestMenu() void
+    -addPlayer() void
+    -deletePlayer() void
+    -updatePlayer() void
+    -addGame() void
+    -addGame(gameLog) void
+    -deleteGame() void
+    -updateGame() void
+    -viewPlayers() void
+    -sortPlayersMenu(players) void
+    -playerSubMenu(player) void
+    -viewGameLogs(logs) void
+    -viewCareerAverages(logs) void
+    -viewCareerHighs(logs) void
+    -sortGameLogsMenu(logs) void
 }
 
 Admin --|> User : extends

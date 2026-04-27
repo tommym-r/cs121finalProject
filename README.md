@@ -59,9 +59,21 @@ the menu methods for both User classes return strings and have no interactivity 
 ### Session.java
 Session is the main hub of the program, containing all the methods that interact with the user and using Database.java and StatCalc.java in particular.
 Additionally Session.java is where the program interacts with other files as well as saving the database between uses
+Session.menu() starts with a buffer menu prompting the user to proceed as either an Admin or Guest
+Session.start() prints the menu and is where the actual user interaction starts, moving on to the subsequent menus
+All methods from lines 57 to 413 are UI methods printing options for the user and calling on methods from StatCalc, Database, Player, and GameLog
+Thsee are all self explainatory are generally named in tandem with the other class' methods they call upon
+They mostly follow the same logic featuring switch and if-else statments to move through options and user responses
+viewGameLogs(), viewCareerAvgs(), viewCareerHighs(), and sortGameLogsMenu() all display stats based on the user input (though only sortGameLogsMenu() takes user input among these)
+These could be considered the endpoint of the "nested" menus
+SaveDatabase() and LoadDatabase() save and load the database object to the "database.dat" file to allow for persistence between sessions.
+LoadDatabase is called once in the session constructor, while SaveDatabase is called whenever a user exists the program
+LoadPlayerFromFile() LoadGamesFromFile() both read correctly formatted csv files and append the data to the respective ArrayList
+these methods are currently not in use (commented out in the Session constructor) but were initially used to load "players.csv" and "games.csv" into the database to allow for easy testing
+These methods could be used later to allow for a User to upload more data through a file in addition to manually adding gamelogs through the program if the program were to be expanded
 
 
-
+### UML Diagram
 
 ```mermaid
 classDiagram

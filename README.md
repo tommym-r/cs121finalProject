@@ -11,6 +11,7 @@ class HasMenu{
 }
 
 class Database{
+    <<Serializable>>
     - players ArrayList~Player~
     - gameLogs ArrayList~GameLog~
     +addPlayer(name) void
@@ -25,6 +26,7 @@ class Database{
 }
 
 class GameLog{
+    <<Serializable>>
     - playerId int
     - date String
     - points int
@@ -46,6 +48,7 @@ class GameLog{
 }
 
 class Player{
+    <<Serializable>>
     - id int
     - name String
     +Player(id, name)
@@ -107,6 +110,10 @@ class Session{
     -viewCareerAverages(logs) void
     -viewCareerHighs(logs) void
     -sortGameLogsMenu(logs) void
+    -saveDatabase() void
+    -loadDatabase() void
+    -loadPlayersFromFile() void
+    -loadGamesFromFile() void
 }
 
 Admin --|> User : extends

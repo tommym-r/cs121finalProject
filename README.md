@@ -1,9 +1,9 @@
 # cs121finalProject
 Basketball Player Database Project
 
-This project functions as a simple database for basketball statistics, allowing for users to view data in different forms or add/manipulate the data.
-Users can login as guest without any credentials and have access to view the data, but to edit the database the user must login as an Admin
-A simple usecase could be a small Highschool Basketball team doing statkeeping for their team's players
+This project functions as a simple database for basketball statistics, allowing for users to view data in different forms or add/manipulate the data.<br>
+Users can login as guest without any credentials and have access to view the data, but to edit the database the user must login as an Admin<br>
+A simple usecase could be a small Highschool Basketball team doing statkeeping for their team's players<br>
 
 ### Admin Login Credentials
 username: admin

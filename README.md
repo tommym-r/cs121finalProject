@@ -14,14 +14,14 @@ Users can view an individual players stats in a variety of manners, or sort a li
 
 ## Class Explanations
 ### GameLog.java
-The GameLog objects are the core building block of the program. Each GameLog contains a statline from an individual game of a single player, tied to the player via the playerId variable.<br>
-Each statistic is saved as a variable via the constructor and has a corresponding getter method.<br>
-Contains an overridden toString() method that allows for simpler printing of the statline<br>
+- The GameLog objects are the core building block of the program. Each GameLog contains a statline from an individual game of a single player, tied to the player via the playerId variable.<br>
+- Each statistic is saved as a variable via the constructor and has a corresponding getter method.<br>
+- Contains an overridden toString() method that allows for simpler printing of the statline<br>
 
 ### Player.java
-The second building block of the program, the Player class's key feature is the playerId variable that allows for GameLogs to be tied to the correct player.<br>
-Both name and id variables have getter methods and name has a setter method in case the admin needs to adjust a name (id shouldn't be changed as that would mess up the data structure)<br>
-Contains a similar toString() method as in GameLog.java for similar purposes<br>
+- The second building block of the program, the Player class's key feature is the playerId variable that allows for GameLogs to be tied to the correct player.<br>
+- Both name and id variables have getter methods and name has a setter method in case the admin needs to adjust a name (id shouldn't be changed as that would mess up the data structure)<br>
+- Contains a similar toString() method as in GameLog.java for similar purposes<br>
 
 ### Database.java
 Database.java holds all of the Player and GameLog objects in two separate ArrayLists and contains the methods needed to manage them<br>
